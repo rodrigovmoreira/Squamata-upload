@@ -39,6 +39,61 @@ Isso garante servidor leve, economia de banda e credenciais do Firebase isoladas
 git clone https://github.com/seu-usuario/squamata-upload.git
 cd squamata-upload
 npm install
+```
+
+### 3. Variáveis de Ambiente
+Crie um arquivo .env na raiz do projeto com a seguinte estrutura:
+```bash
+PORT=3005
+# Crie uma senha forte. Suas aplicações usarão ela para pedir acesso.
+API_SECRET_KEY=sua_chave_secreta_super_segura_aqui
+# O nome do seu bucket no Firebase (sem "gs://")
+FIREBASE_BUCKET=seu-projeto.firebasestorage.com
+```
+
+### 4. Credenciais do Firebase
+Faça o download da sua chave privada no painel do Firebase (Configurações do Projeto > Contas de Serviço) e salve na raiz do projeto com o nome:
+📄 credentials.json
+
+---
+
+## 💻 Como Usar (API Reference)
+
+```bash
+npm start
+```
+
+### Gerar URL de Upload
+
+POST /generate-upload-url
+
+### Headers Obrigatórios:
+
+```bash
+Authorization: <Sua API_SECRET_KEY>
+Content-Type: application/json
+```
+
+### Body (JSON):
+
+```bash
+{
+  "fileName": "foto-lanche.jpg",
+  "contentType": "image/jpeg",
+  "tenantId": "lojista-xpto-123",
+  "project": "calango-food"
+}
+```
+
+### Resposta de Sucesso (200 OK):
+
+```bash
+{
+  "uploadUrl": "[https://storage.googleapis.com/](https://storage.googleapis.com/)... (URL temporária para fazer o PUT do arquivo)",
+  "publicUrl": "[https://firebasestorage.googleapis.com/](https://firebasestorage.googleapis.com/)... (URL final para salvar no banco)",
+  "filePath": "calango-food/lojista-xpto-123/170000000_foto-lanche.jpg"
+}
+```
 
 ---
 *Desenvolvido com ☕ e foco em escalabilidade pela equipe Calango.*

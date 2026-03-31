@@ -8,23 +8,23 @@ Criar documentação completa focada em deployment do microsserviço Squamata-up
 ## Steps
 
 ### Fase 1: Documentação Base
-1. **README.md** — Visão geral, características, quick start  
-2. **SETUP.md** — Instalação local, variáveis de ambiente, testes  
-3. **API_DOCUMENTATION.md** — Endpoints, payloads, responses, exemplos cURL com curl executáveis  
+1. **README** — Visão geral, características, quick start  
+2. **SETUP** — Instalação local, variáveis de ambiente, testes  
+3. **API_DOCUMENTATION** — Endpoints, payloads, responses, exemplos cURL com curl executáveis  
 
 ### Fase 2: Docker & Deployment
 4. **Dockerfile** — Multi-stage, Node.js 20-slim, non-root user, otimizado  
 5. **docker-compose.yml** — App service, volumes, port mapping, env file  
 6. **.dockerignore** — Excluir node_modules, .git, .env, logs  
-7. **DEPLOYMENT.md** — Build, push, run em VPS Linux, nginx reverse proxy config  
+7. **DEPLOYMENT** — Build, push, run em VPS Linux, nginx reverse proxy config  
 
 ### Fase 3: Configuração & Segurança
 8. **.env.example** — Template de variáveis  
-9. **SECURITY.md** — Secrets, autenticação, rate limiting (presente/futura), HTTPS  
-10. **ARCHITECTURE.md** — Diagrama ASCII, fluxo de requisição, integração Firebase  
+9. **SECURITY** — Secrets, autenticação, rate limiting (presente/futura), HTTPS  
+10. **ARCHITECTURE** — Diagrama ASCII, fluxo de requisição, integração Firebase  
 
 ### Fase 4: Operacional
-11. **MONITORING.md** — Health endpoints, logs, troubleshooting  
+11. **MONITORING** — Health endpoints, logs, troubleshooting  
 
 ---
 
@@ -53,7 +53,7 @@ Criar documentação completa focada em deployment do microsserviço Squamata-up
 
 ## Documentation Specifications
 
-### 1. README.md
+### 1. README
 - **Purpose**: Marketing + Getting Started  
 - **Sections**:
   - Header com emoji 🦎 e descrição 1-liner
@@ -64,7 +64,7 @@ Criar documentação completa focada em deployment do microsserviço Squamata-up
   - Links para outros docs (SETUP, API_DOCUMENTATION, DEPLOYMENT, ARCHITECTURE, SECURITY)
   - License, Author
 
-### 2. SETUP.md
+### 2. SETUP
 - **Purpose**: Desenvolvimento local  
 - **Sections**:
   - Prerequisites (Node.js 18+, npm/yarn, Firebase account)
@@ -74,7 +74,7 @@ Criar documentação completa focada em deployment do microsserviço Squamata-up
   - Teste funcional (cURL POST com token válido)
   - Troubleshooting (EADDRINUSE, env vars faltando)
 
-### 3. API_DOCUMENTATION.md
+### 3. API_DOCUMENTATION
 - **Purpose**: Referência de endpoints  
 - **Sections**:
   - Base URL: http://localhost:3005 ou https://api.domain.com
@@ -127,11 +127,11 @@ Criar documentação completa focada em deployment do microsserviço Squamata-up
 - .env.*
 - docker-compose.yml
 - credentials.json
-- *.md
+- *
 - logs/
 - .DS_Store
 
-### 7. DEPLOYMENT.md
+### 7. DEPLOYMENT
 - **Purpose**: Deploy em VPS Linux  
 - **Sections**:
   - Prerequisites (VPS com Docker/Docker Compose, SSH access)
@@ -172,7 +172,7 @@ API_SECRET_KEY=your_strong_secret_key_here
 FIREBASE_BUCKET=your-project.firebasestorage.app
 ```
 
-### 9. SECURITY.md
+### 9. SECURITY
 - **Purpose**: Segurança e boas práticas  
 - **Sections**:
   - API_SECRET_KEY: Não commit em repo, usar .env, rotação regular
@@ -184,7 +184,7 @@ FIREBASE_BUCKET=your-project.firebasestorage.app
   - Logs: Não logar secrets
   - Dependency updates: npm audit, renovate
 
-### 10. ARCHITECTURE.md
+### 10. ARCHITECTURE
 - **Purpose**: Visão técnica  
 - **Sections**:
   - Diagrama ASCII: Client → Nginx → Node.js → Firebase
@@ -193,7 +193,7 @@ FIREBASE_BUCKET=your-project.firebasestorage.app
   - Integração Firebase: Service Account auth via credentials.json
   - URL assinada: O que é, por que 5 min expiry, como usar
 
-### 11. MONITORING.md
+### 11. MONITORING
 - **Purpose**: Operacional e observabilidade  
 - **Sections**:
   - Logs: console.log → docker logs, structure JSON logs (futuro)
@@ -212,11 +212,11 @@ FIREBASE_BUCKET=your-project.firebasestorage.app
 ## Verification Criteria
 
 - [ ] README é legível em 3 minutos para novo dev
-- [ ] SETUP.md: npm install → npm start → POST com sucesso
-- [ ] API_DOCUMENTATION.md: cURL examples são executáveis
+- [ ] SETUP: npm install → npm start → POST com sucesso
+- [ ] API_DOCUMENTATION: cURL examples são executáveis
 - [ ] Dockerfile: build sem erros, <300MB, executa npm start
 - [ ] docker-compose.yml: `docker-compose up -d` funciona
-- [ ] DEPLOYMENT.md: passo-a-passo claro e testável em VPS
+- [ ] DEPLOYMENT: passo-a-passo claro e testável em VPS
 - [ ] .env.example: listado e documentado
 - [ ] Todos os docs linkados no README
 - [ ] Nenhum secret em documentação (exemplos com placeholders)
