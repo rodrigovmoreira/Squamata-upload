@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import admin from 'firebase-admin';
 import { readFileSync } from 'fs';
+import path from 'path';
 
 // Carrega as variáveis do .env
 dotenv.config();
@@ -72,4 +73,18 @@ app.post('/generate-upload-url', authMiddleware, async (req, res) => {
 const PORT = process.env.PORT || 3005;
 app.listen(PORT, () => {
   console.log(`Squamata-upload rodando na porta ${PORT} 🦎`);
+  showBanner();
 });
+
+function showBanner() {
+  try {
+    const banner = readFileSync(new URL('./banner.txt', import.meta.url), 'utf8');
+    const lines = banner.split('\n');
+    lines.forEach(line => {
+      console.log('\x1b[92m%s\x1b[0m', line);
+    });
+    console.log('\x1b[32m%s\x1b[0m', '      Squamata Upload Online!\n');
+  } catch (err) {
+    console.error('Erro ao carregar o banner:', err.message);
+  }
+}
