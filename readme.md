@@ -96,4 +96,4 @@ Content-Type: application/json
 ```
 
 ---
-*Desenvolvido com ☕ e foco em escalabilidade pela equipe Calango.*
+Desenvolvido com ☕ e foco em escalabilidade pela equipe Calango.
