@@ -1,8 +1,8 @@
 # 🦎 Squamata Upload
 
-![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+[![Node.js](https://img.shields.io/badge/Node.js-22%2B-green?logo=node.js)](https://nodejs.org/)
+[![Express.js](https://img.shields.io/badge/Express.js-5.x-404D59?logo=express&logoColor=white)](https://expressjs.com/)
+[![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
 
 Um microsserviço dedicado, rápido e seguro para gerenciamento de uploads no Firebase Storage. Criado para centralizar a infraestrutura de arquivos de múltiplas aplicações (como Calango Food e Calango Bot).
 
