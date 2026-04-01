@@ -1,0 +1,11 @@
+### Gerar URL de Upload
+POST http://localhost:3005/generate-upload-url
+Authorization: GfSLsZV8RFzVlPnJF5J8Ru1eUmi8Bs9DnNklmNSv6t73wJCtBsGcTpCsHPgKIq5s
+Content-Type: application/json
+
+{
+  "fileName": "teste-rest-client.jpg",
+  "contentType": "image/jpeg",
+  "tenantId": "lojista-xpto-123",
+  "project": "calango-food"
+}
