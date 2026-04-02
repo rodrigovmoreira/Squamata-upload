@@ -3,7 +3,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import admin from 'firebase-admin';
 import { readFileSync } from 'fs';
-import path from 'path';
 
 // Carrega as variáveis do .env
 dotenv.config();
