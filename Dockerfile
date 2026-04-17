@@ -17,15 +17,15 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Create non-root user for security
-RUN addgroup -g 1000 appuser && \
-    adduser -D -u 1000 -G appuser appuser
+RUN addgroup -g 1000 node && \
+    adduser -D -u 1000 -G node node
 
 # Copy node_modules from builder
-COPY --from=builder --chown=appuser:appuser /app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 
 # Copy application code
-COPY --chown=appuser:appuser package*.json ./
-COPY --chown=appuser:appuser index.js ./
+COPY --chown=node:node package*.json ./
+COPY --chown=node:node index.js ./
 
 # Expose port
 EXPOSE 3005
