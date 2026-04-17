@@ -27,9 +27,6 @@ COPY --from=builder --chown=appuser:appuser /app/node_modules ./node_modules
 COPY --chown=appuser:appuser package*.json ./
 COPY --chown=appuser:appuser index.js ./
 
-# Switch to non-root user
-USER appuser
-
 # Expose port
 EXPOSE 3005
 
