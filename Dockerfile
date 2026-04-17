@@ -27,6 +27,8 @@ COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node index.js ./
 
+ENV NODE_ENV=production
+
 # Expose port
 EXPOSE 3005
 
