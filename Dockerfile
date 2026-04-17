@@ -1,33 +1,31 @@
-# Squamata-upload Dockerfile
 # Multi-stage build optimized for production
 
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
+# Copia os arquivos de pacote
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Instala as dependencias
+RUN npm ci --omit=dev
 
 # Production stage
 FROM node:20-alpine
 
 WORKDIR /app
 
-# Create non-root user for security
-RUN addgroup -g 1000 node && \
-    adduser -D -u 1000 -G node node
-
-# Copy node_modules from builder
+# Copia do builder dando propriedade ao usuário nativo 'node'
 COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 
-# Copy application code
+# Copia o código dando propriedade ao usuário 'node'
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node index.js ./
 
 ENV NODE_ENV=production
+
+# Muda para o usuário seguro que JÁ EXISTE na imagem
+USER node
 
 # Expose port
 EXPOSE 3005
