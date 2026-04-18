@@ -17,7 +17,7 @@ services:
     environment:
       - NODE_ENV=production
     networks:
-      - squamata-network
+      - squamata-global
     logging:
       driver: "json-file"
       options:
@@ -25,5 +25,5 @@ services:
         max-file: "3"
 
 networks:
-  squamata-network:
-    driver: bridge
+  squamata-global:
+    external: true
