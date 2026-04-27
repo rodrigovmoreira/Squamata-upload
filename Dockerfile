@@ -21,6 +21,7 @@ COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 # Copia o código dando propriedade ao usuário 'node'
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node index.js ./
+COPY banner.txt ./
 
 ENV NODE_ENV=production
 
