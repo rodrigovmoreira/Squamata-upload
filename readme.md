@@ -65,7 +65,13 @@ npm start
 
 ### Gerar URL de Upload
 
-POST /generate-upload-url
+POST /api/v1/upload/generate-upload-url
+
+> Caminho único: não existe mais o `POST /generate-upload-url` na raiz. Os clientes montam a URL a partir da base do host (`http://localhost:3005`) + o caminho versionado. Ver [ADR 002](../Calango-docs/docs/ADRs/002-versionamento-de-api.md).
+
+### Healthcheck
+
+GET /api/v1/health
 
 ### Headers Obrigatórios:
 

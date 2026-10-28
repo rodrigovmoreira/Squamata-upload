@@ -36,7 +36,9 @@ const authMiddleware = (req, res, next) => {
 };
 
 // Rota principal para gerar a URL Assinada
-app.post('/generate-upload-url', authMiddleware, async (req, res) => {
+// Caminho canônico único: /api/v1/upload/generate-upload-url.
+// Ver ADR 002 em Calango-docs/docs/ADRs.
+app.post('/api/v1/upload/generate-upload-url', authMiddleware, async (req, res) => {
   try {
     const { fileName, contentType } = req.body;
 
@@ -70,6 +72,10 @@ app.post('/generate-upload-url', authMiddleware, async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3005;
+app.get('/api/v1/health', (req, res) => {
+  res.json({ status: 'UP', service: 'squamata-upload', timestamp: new Date().toISOString() });
+});
+
 app.listen(PORT, () => {
   console.log(`Squamata-upload rodando na porta ${PORT} 🦎`);
   showBanner();
